@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scanner
+        Scanner in = new Scanner(System.in);
+
+        // Variáveis
+        String nomeVendedor, codigoPeca1, codigoPeca2;
+        double quantidadeVendida1, quantidadeVendida2, valorComissao, totalVendaPeca1, totalVendaPeca2, totalVendas, comissao;
+
+        valorComissao = 0.05; // Comissão de 5%
+
+        // Coletando informações do vendedor
+        System.out.println("Digite seu nome:");
+        nomeVendedor = in.nextLine();
+
+        // Coletando código das peças
+        System.out.println("Digite o código da peça 1:");
+        codigoPeca1 = in.nextLine();
+        
+        System.out.println("Digite o código da peça 2:");
+        codigoPeca2 = in.nextLine();
+
+        // Criando objetos para armazenar os preços das peças
+        precoUnidadePeca Peca1 = new precoUnidadePeca(100.00);
+        precoUnidadePeca Peca2 = new precoUnidadePeca(200.00);
+
+        // Entrada de dados para quantidade vendida
+        System.out.println("Quantas peças de código " + codigoPeca1 + " você vendeu?");
+        quantidadeVendida1 = in.nextDouble();
+        totalVendaPeca1 = quantidadeVendida1 * Peca1.valorPeca;
+
+        System.out.println("Quantas peças de código " + codigoPeca2 + " você vendeu?");
+        quantidadeVendida2 = in.nextDouble();
+        totalVendaPeca2 = quantidadeVendida2 * Peca2.valorPeca;
+
+        // Cálculo do total de vendas e comissão
+        totalVendas = totalVendaPeca1 + totalVendaPeca2;
+        comissao = totalVendas * valorComissao;
+
+        // Exibindo resultados
+        System.out.println("\n--- Relatório de Comissão ---");
+        System.out.println("Vendedor: " + nomeVendedor);
+        System.out.println("Código Peça 1: " + codigoPeca1 + " | Total Vendido: R$ " + totalVendaPeca1);
+        System.out.println("Código Peça 2: " + codigoPeca2 + " | Total Vendido: R$ " + totalVendaPeca2);
+        System.out.println("Total de Vendas: R$ " + totalVendas);
+        System.out.println("Comissão (5%): R$ " + comissao);
+
+        in.close(); // Fecha o Scanner
+    }
+}
+
+class precoUnidadePeca {
+    double valorPeca;
+
+    public precoUnidadePeca(double valor) {
+        this.valorPeca = valor;
+    }
+}
