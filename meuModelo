@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scanner
+        Scanner in = new Scanner (System.in);
+
+        // Variáveis
+        double quantidadeVendida,quantidadeVendida2, valorComissao, total, qVvQ1, qVvQ2, salario, semiComissao;
+        valorComissao = 0.05;
+
+        // Valores das Peças
+        precoUnidadePeca Peca1 = new precoUnidadePeca(100.00);
+        precoUnidadePeca Peca2 = new precoUnidadePeca(200.00);
+
+        //Salario
+        System.out.println("Quanto você recebe?");
+        salario = in.nextDouble();
+
+        // Onde a mágica acontece:
+        System.out.println("Quantas peças de primeira categoria você vendeu?");
+        quantidadeVendida = in.nextInt();
+        qVvQ1 = quantidadeVendida * Peca1.valorPeca;
+
+        System.out.println("Quantas peças de segunda categoria você vendeu?");
+        quantidadeVendida2 = in.nextInt();
+        qVvQ2 = quantidadeVendida2 * Peca2.valorPeca;
+
+        // Total:
+        total = qVvQ1 + qVvQ2;
+        semiComissao = total * valorComissao;
+        System.out.println("Sua comissão será de: " + (semiComissao + salario));
+    }
+}
+
+class precoUnidadePeca{
+    double valorPeca;
+    String IdPeca;
+
+    public precoUnidadePeca(double valor) {
+        this.valorPeca = valor;
+    }
+
+    public void pecaID(String CodigoPeca) {
+        this.IdPeca = CodigoPeca;
+    }
+}
