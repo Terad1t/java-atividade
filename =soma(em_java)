@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int soma = 0;
+        while (true) {
+            System.out.print("numero: ");
+            String entrada = in.next();
+
+            if (entrada.equalsIgnoreCase("done")) {
+                break;
+            }
+
+            try {
+                int numero = Integer.parseInt(entrada);
+                soma += numero;
+            } catch (NumberFormatException e) {
+                System.out.println("invalido");
+            }
+        }
+        System.out.println(soma - 2);
+        in.close();
+    }
+}
